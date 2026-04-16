@@ -16,7 +16,10 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
 
 	public static final Logger LOGGER=LoggerFactory.getLogger(LoggingAspect.class);
-	
+
+	//This is the Advice (what)
+	// execution(Return_type Class_name.Method_name(Arguments))
+	// * means all but in Arguments .. means all
 	@Before("execution (* com.telusko.springbootrest.service.JobService.getJob*(..)) || execution(* com.telusko.springbootrest.service.JobService.updateJob*(..))")
 	public void logMethodCall(JoinPoint jp) {
 		LOGGER.info("Method Called "+jp.getSignature().getName());
